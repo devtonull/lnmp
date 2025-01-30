@@ -18,6 +18,7 @@ rM=$(($RANDOM % 59))
 # rH=$(($RANDOM % 11))
 hour_range=(5 6 7 13 14 15 21 22 23)
 rH=${hour_range[$RANDOM % ${#hour_range[@]}]}
+rD=$(shuf -i 2-5 -n 1)
 \cp /etc/hosts /etc/hosts.bak
 mkdir /home/cacheroot
 
@@ -30,8 +31,8 @@ if [ -f /etc/debian_version ]; then
     set_crontab() {
         # echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
         # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/crontabs/root && /etc/init.d/cron restart
-        (crontab -l; echo "#${rM} ${rH} * * 5 /sbin/reboot") | crontab -
-        (crontab -l; echo "#/etc/init.d/cron restart") | crontab -
+        (crontab -l; echo "# ${rM} ${rH} */${rD} * * /sbin/reboot") | crontab -
+        (crontab -l; echo "# /etc/init.d/cron restart") | crontab -
     }
 elif [ -f /etc/centos-release ]; then
     update_install() {
@@ -43,8 +44,8 @@ elif [ -f /etc/centos-release ]; then
     set_crontab() {
         # echo '#/sbin/service crond start' >>/var/spool/cron/root
         # echo '#'$((rM)) $((rH)) "* * * /sbin/reboot" >>/var/spool/cron/root && /sbin/service crond start
-        (crontab -l; echo "#${rM} ${rH} * * 5 /sbin/reboot") | crontab -
-        (crontab -l; echo "#/sbin/service crond start") | crontab -
+        (crontab -l; echo "# ${rM} ${rH} */${rD} * * /sbin/reboot") | crontab -
+        (crontab -l; echo "# /sbin/service crond start") | crontab -
     }
 else
     echo "This install script only support Debian or CentOS."
