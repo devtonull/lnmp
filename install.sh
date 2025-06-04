@@ -70,6 +70,7 @@ get_source_file() {
     git clone https://github.com/devtonull/headers-more-nginx-module
     git clone https://github.com/devtonull/nginx_upstream_check_module
     git clone https://github.com/devtonull/ngx_http_lower_upper_case
+    git clone https://github.com/devtonull/ngx_http_proxy_connect_module
     # # set replace
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/fail2ban.sh -O /root/lnmp${lnmp_ver}/tools
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/version.sh -O /root/lnmp${lnmp_ver}/include/version.sh
