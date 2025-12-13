@@ -235,4 +235,5 @@ change_mysql_cnf
 change_php_ini
 
 # # done
+wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/example/example.com.conf -O /home/wwwroot/example.com.conf
 lnmp restart
