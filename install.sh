@@ -8,7 +8,7 @@ CheckIinstallType="$1"
 get_install_tar() {
     if [ "${CheckIinstallType}" = "offline" ]; then
         CheckMirror="n"
-        axel -n 10 https://src.wola.work/lnmp/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
+        wget https://src.wola.work/lnmp/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
         # wget https://github.com/jwsky/lnmp-full-safe/releases/download/publish/lnmp${lnmp_ver}-full.tar.gz -cO lnmp${lnmp_ver}-full.tar.gz && tar zxf lnmp${lnmp_ver}-full.tar.gz && mv lnmp${lnmp_ver}-full lnmp${lnmp_ver}
     else
         wget https://github.com/devtonull/lnmp/raw/main/lnmp${lnmp_ver}.1.tar.gz -cO lnmp${lnmp_ver}.1.tar.gz && tar zxf lnmp${lnmp_ver}.1.tar.gz
@@ -26,7 +26,7 @@ mkdir /home/cacheroot
 if [ -f /etc/debian_version ]; then
     update_install() {
         apt update && apt upgrade -y
-        apt install curl wget zip unzip git lsof ufw net-tools iftop rsync axel -y
+        apt install curl wget zip unzip git lsof ufw net-tools iftop rsync -y
     }
     set_crontab() {
         # echo '#/etc/init.d/cron restart' >>/var/spool/cron/crontabs/root
