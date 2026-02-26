@@ -20,7 +20,7 @@ hour_range=(5 6 7 13 14 15 21 22 23)
 rH=${hour_range[$RANDOM % ${#hour_range[@]}]}
 rD=$(shuf -i 2-5 -n 1)
 \cp /etc/hosts /etc/hosts.bak
-mkdir /home/cacheroot
+mkdir -p /home/cacheroot
 
 # # Check system
 if [ -f /etc/debian_version ]; then
