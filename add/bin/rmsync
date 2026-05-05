@@ -3,6 +3,7 @@
 # Usage: rmsync [path ...]
 #   path: relative (resolved from $PWD) or absolute
 #   no args: just flush DIR_B using rsync
+# wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/bin/rmsync -O /usr/local/bin/rmsync && chmod +x /usr/local/bin/rmsync
 # sudo mv rmsync /usr/local/bin/
 # chmod +x /usr/local/bin/rmsync
 
