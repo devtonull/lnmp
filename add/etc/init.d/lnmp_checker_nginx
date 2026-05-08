@@ -1,0 +1,44 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          lnmp_checker_nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Check if nginx process exists
+### END INIT INFO
+
+# wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/etc/init.d/lnmp_checker_nginx -O /etc/init.d/lnmp_checker_nginx
+# chmod +x /etc/init.d/lnmp_checker_nginx
+# update-rc.d lnmp_checker_nginx defaults
+# /etc/init.d/lnmp_checker_nginx >/dev/null 2>&1 &
+
+# 等待系统服务启动
+sleep 30
+
+LOG_FILE="/home/wwwlogs/lnmp_checker_nginx.log"
+
+# 检查 nginx 进程
+check_nginx() {
+    pgrep -x nginx >/dev/null 2>&1
+}
+
+# 判断 nginx 是否存在
+if check_nginx; then
+    echo "$(date) nginx is already running." >> "$LOG_FILE"
+    exit 0
+else
+    echo "$(date) nginx is not running. Starting nginx..." >> "$LOG_FILE"
+
+    # 启动 nginx
+    lnmp nginx start
+
+    # 再次检查
+    sleep 3
+
+    if check_nginx; then
+        echo "$(date) nginx started successfully." >> "$LOG_FILE"
+    else
+        echo "$(date) failed to start nginx." >> "$LOG_FILE"
+    fi
+fi
