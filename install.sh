@@ -76,6 +76,7 @@ get_source_file() {
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/version.sh -O /root/lnmp${lnmp_ver}/include/version.sh
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/nginx.sh -O /root/lnmp${lnmp_ver}/include/nginx.sh
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/upgrade_nginx.sh -O /root/lnmp${lnmp_ver}/include/upgrade_nginx.sh
+    wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/redis.sh -O /root/lnmp${lnmp_ver}/include/redis.sh
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/change/lnmp.conf -O /root/lnmp${lnmp_ver}/lnmp.conf
     wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/bin/rmsync -O /usr/local/bin/rmsync && chmod +x /usr/local/bin/rmsync
 }
