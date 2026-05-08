@@ -174,16 +174,17 @@ set_ufw() {
     fi
 }
 
-set_lnmp_checker() {
-    wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/etc/init.d/lnmp_checker -O /etc/init.d/lnmp_checker
+set_lnmp_checker_nginx() {
+    wget https://raw.githubusercontent.com/devtonull/lnmp/refs/heads/main/add/etc/init.d/lnmp_checker_nginx -O /etc/init.d/lnmp_checker_nginx
     if [ -f /etc/centos-release ]; then
-        chmod +x /etc/init.d/lnmp_checker
-        chkconfig --add lnmp_checker
-        chkconfig lnmp_checker on
+        chmod +x /etc/init.d/lnmp_checker_nginx
+        chkconfig --add lnmp_checker_nginx
+        chkconfig lnmp_checker_nginx on
 
     else
-        chmod +x /etc/init.d/lnmp_checker
-        update-rc.d lnmp_checker defaults
+        chmod +x /etc/init.d/lnmp_checker_nginx
+        update-rc.d lnmp_checker_nginx defaults
+        /etc/init.d/lnmp_checker_nginx >/dev/null 2>&1 &
     fi
 }
 
@@ -230,7 +231,7 @@ install_luarocks
 # # set
 set_crontab
 set_ufw
-set_lnmp_checker
+set_lnmp_checker_nginx
 deny_ip_access
 change_mysql_cnf
 change_php_ini
