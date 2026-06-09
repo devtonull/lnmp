@@ -65,6 +65,8 @@ get_source_file() {
     # git clone https://github.com/openresty/headers-more-nginx-module
     # git clone https://github.com/yaoweibin/nginx_upstream_check_module
     # git clone https://github.com/replay/ngx_http_lower_upper_case
+    # git clone https://github.com/chobits/ngx_http_proxy_connect_module
+    
     git clone https://github.com/devtonull/ngx_cache_purge
     git clone https://github.com/devtonull/ngx_http_substitutions_filter_module
     git clone https://github.com/devtonull/headers-more-nginx-module
