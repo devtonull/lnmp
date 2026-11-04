@@ -135,7 +135,9 @@ move_targets() {
 # ── Step: rsync wipe DIR_B ────────────────────────────────────────────────────
 rsync_wipe() {
   info "Wiping ${BOLD}$DIR_B${RESET} via rsync..."
-  rsync -av --delete "$DIR_A/" "$DIR_B/"
+  rsync -av --delete "$DIR_A/" "$DIR_B/" >/dev/null 2>&1 &
+  sleep 2
+  du -sh $DIR_B
   ok "Done. DIR_B is now empty."
 }
 
